@@ -19,10 +19,11 @@ const AppleVisualizer: React.FC = () => {
       for (let i = 0; i < a; i++) {
         let group = [];
         for (let j = 0; j < b; j++) {
-          group.push(<Apple key={j} />);
+          const key = `mult-${i}-${j}`
+          group.push(<Apple key={key} />);
         }
         groups.push(
-          <div key={i}>
+          <div key={`mult-group-${i}`}>
             {group}
           </div>
         );
@@ -31,7 +32,11 @@ const AppleVisualizer: React.FC = () => {
     else if (mode === "division") {
       const total = a;
       const groupsCount = b;
-      if (groupsCount === 0) return [<div key="error">Cannot divide by 0</div>];
+      //if (groupsCount === 0) return [<div key="error">Cannot divide by 0</div>];
+
+      if (!Number.isFinite(groupsCount) || groupsCount <= 0) {
+        return [<div key="error">Enter a valid divisor</div>];
+      }
 
       const applesPerGroup = Math.floor(total / groupsCount);
       const remainder = total % groupsCount;
@@ -39,16 +44,16 @@ const AppleVisualizer: React.FC = () => {
       for (let i = 0; i < applesPerGroup; i++) {
         const group = [];
         for (let j = 0; j < groupsCount; j++) {
-          group.push(<Apple key={j} />);
+          const key = `div-${i}-${j}`
+          group.push(<Apple key={key} />);
         }
-        groups.push(<div key={i}>{group}</div>);
+        groups.push(<div key={`div-group-${i}`}>{group}</div>);
       }
 
       if (remainder > 0) {
         const remainderGroup = [];
         for (let i = 0; i < remainder; i ++) {
             remainderGroup.push(<Apple key={`rem-${i}`}/>
-
             );
         }
         groups.push(<div key="remainder"
@@ -91,7 +96,8 @@ const AppleVisualizer: React.FC = () => {
 
               const value = parseInt(val);
               if (!isNaN(value)) {
-                  setA(Math.min(10, Math.max(0, value)));
+                  const maxValue = mode === "division" ? 100 : 10;
+                  setA(Math.min(maxValue, Math.max(0, value)));
               }
             }}
           />
@@ -115,7 +121,8 @@ const AppleVisualizer: React.FC = () => {
 
               const value = parseInt(val);
               if (!isNaN(value)) {
-                  setB(Math.min(10, Math.max(0, value)));
+                  const maxValue = mode === "division" ? 100 : 10;
+                  setB(Math.min(maxValue, Math.max(0, value)));
               }
             }}
           />
