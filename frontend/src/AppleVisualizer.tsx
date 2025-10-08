@@ -49,6 +49,7 @@ const AppleVisualizer: React.FC = () => {
             type="number"
             value={a}
             min={0}
+            style={{ fontSize: '1.5rem', width: '60px', padding: '5px' }}
             onChange={e => {
               const val = e.target.value;
 
@@ -72,6 +73,7 @@ const AppleVisualizer: React.FC = () => {
             type="number"
             value={b}
             min={0}
+            style={{ fontSize: '1.5rem', width: '60px', padding: '5px' }}
             onChange={e => {
               const val = e.target.value;
 
