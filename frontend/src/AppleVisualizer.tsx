@@ -48,8 +48,21 @@ const AppleVisualizer: React.FC = () => {
           <input
             type="number"
             value={a}
-            min={1}
-            onChange={e => setA(Math.max(1, parseInt(e.target.value) || 1))}
+            min={0}
+            onChange={e => {
+              const val = e.target.value;
+
+              // Allow empty input (user is typing/deleting)
+              if (val === "") {
+                  setA(val as any);
+                  return;
+              }
+
+              const value = parseInt(val);
+              if (!isNaN(value)) {
+                  setA(Math.min(10, Math.max(0, value)));
+              }
+            }}
           />
         </label>
 
@@ -58,8 +71,21 @@ const AppleVisualizer: React.FC = () => {
           <input
             type="number"
             value={b}
-            min={1}
-            onChange={e => setB(Math.max(1, parseInt(e.target.value) || 1))}
+            min={0}
+            onChange={e => {
+              const val = e.target.value;
+
+              // Allow empty input (user is typing/deleting)
+              if (val === "") {
+                  setB(val as any);
+                  return;
+              }
+
+              const value = parseInt(val);
+              if (!isNaN(value)) {
+                  setB(Math.min(10, Math.max(0, value)));
+              }
+            }}
           />
         </label>
       </div>
@@ -71,7 +97,7 @@ const AppleVisualizer: React.FC = () => {
             : `${a} ÷ ${b} = ${Math.floor(a / b)} R${a % b}`}
         </strong>
       </div>
-      
+
       <div style={{ marginTop: "20px" }}>{renderGroups()}</div>
     </div>
 
