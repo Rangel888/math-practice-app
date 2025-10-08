@@ -27,8 +27,36 @@ const AppleVisualizer: React.FC = () => {
           </div>
         );
       }
-      return groups;
     }
+    else if (mode === "division") {
+      const total = a;
+      const groupsCount = b;
+      if (groupsCount === 0) return [<div key="error">Cannot divide by 0</div>];
+
+      const applesPerGroup = Math.floor(total / groupsCount);
+      const remainder = total % groupsCount;
+
+      for (let i = 0; i < applesPerGroup; i++) {
+        const group = [];
+        for (let j = 0; j < groupsCount; j++) {
+          group.push(<Apple key={j} />);
+        }
+        groups.push(<div key={i}>{group}</div>);
+      }
+
+      if (remainder > 0) {
+        const remainderGroup = [];
+        for (let i = 0; i < remainder; i ++) {
+            remainderGroup.push(<Apple key={`rem-${i}`}/>
+
+            );
+        }
+        groups.push(<div key="remainder"
+        style={{textAlign: "left"}}>{remainderGroup}</div>)
+      }
+    }
+    
+    return groups;
   }
 
   return (
