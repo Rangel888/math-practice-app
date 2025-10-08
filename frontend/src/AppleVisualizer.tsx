@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './AppleVisualizer.scss';
+
 const Apple = () => (
   <span style={{ fontSize: '2rem', margin: '2px' }}>🍎</span>
 );
@@ -30,17 +32,13 @@ const AppleVisualizer: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
+    <div className="apple-visualizer">
       <h2>🍎 Apple Math Visualizer</h2>
 
-      <div style={{ marginBottom: "15px" }}>
+      <div className="mode-selector">
         <label>
           Mode:{" "}
-          <select 
-            value={mode} 
-            onChange={e => setMode(e.target.value)}
-            style={{ fontSize: '1.5rem', padding: '5px' }}
-          >
+          <select value={mode} onChange={e => setMode(e.target.value)}>
             <option value="multiplication">Multiplication</option>
             <option value="division">Division</option>
           </select>
@@ -106,21 +104,9 @@ const AppleVisualizer: React.FC = () => {
         </strong>
       </div>
 
-      <div
-        style={{
-            marginTop: "10px",
-            padding: "5px 20px 20px 20px",
-            border: "4px solid #8B4513",            // dark brown basket border
-            borderRadius: "12px",
-            backgroundColor: "#DEB887",             // light brown basket color
-            display: "inline-block",
-            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.2)", // soft shadow
-            position: "relative"
-        }}
-        >
-
-      <div style={{ marginTop: "20px" }}>{renderGroups()}</div>
-    </div>
+      <div className="basket">
+        <div className="apple-group">{renderGroups()}</div>
+      </div>
     </div>
 
   );
