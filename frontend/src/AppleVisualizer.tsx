@@ -100,7 +100,21 @@ const AppleVisualizer: React.FC = () => {
         </strong>
       </div>
 
+      <div
+        style={{
+            marginTop: "10px",
+            padding: "5px 20px 20px 20px",
+            border: "4px solid #8B4513",            // dark brown basket border
+            borderRadius: "12px",
+            backgroundColor: "#DEB887",             // light brown basket color
+            display: "inline-block",
+            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.2)", // soft shadow
+            position: "relative"
+        }}
+        >
+
       <div style={{ marginTop: "20px" }}>{renderGroups()}</div>
+    </div>
     </div>
 
   );
