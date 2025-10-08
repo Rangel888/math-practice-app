@@ -20,7 +20,7 @@ const AppleVisualizer: React.FC = () => {
           group.push(<Apple key={j} />);
         }
         groups.push(
-          <div key={i} style={{ marginBottom: "10px" }}>
+          <div key={i}>
             {group}
           </div>
         );
