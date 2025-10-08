@@ -36,7 +36,11 @@ const AppleVisualizer: React.FC = () => {
       <div style={{ marginBottom: "15px" }}>
         <label>
           Mode:{" "}
-          <select value={mode} onChange={e => setMode(e.target.value)}>
+          <select 
+            value={mode} 
+            onChange={e => setMode(e.target.value)}
+            style={{ fontSize: '1.5rem', padding: '5px' }}
+          >
             <option value="multiplication">Multiplication</option>
             <option value="division">Division</option>
           </select>
