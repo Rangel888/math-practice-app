@@ -63,6 +63,15 @@ const AppleVisualizer: React.FC = () => {
           />
         </label>
       </div>
+
+      <div style={{ marginTop: "20px" }}>
+        <strong>
+          {mode === "multiplication"
+            ? `${a} × ${b} = ${a * b}`
+            : `${a} ÷ ${b} = ${Math.floor(a / b)} R${a % b}`}
+        </strong>
+      </div>
+      
       <div style={{ marginTop: "20px" }}>{renderGroups()}</div>
     </div>
 
