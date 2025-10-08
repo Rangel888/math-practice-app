@@ -94,7 +94,9 @@ const AppleVisualizer: React.FC = () => {
         <strong>
           {mode === "multiplication"
             ? `${a} × ${b} = ${a * b}`
-            : `${a} ÷ ${b} = ${Math.floor(a / b)} R${a % b}`}
+            : b === 0
+              ? "Cannot divide by 0"
+              : `${a} ÷ ${b} = ${Math.floor(a / b)} R${a % b}`}
         </strong>
       </div>
 
