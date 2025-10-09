@@ -31,23 +31,29 @@ const AppleVisualizer: React.FC = () => {
       }
     }
     else if (mode === "division") {
-      const total = a;
+      const totalApples = a;
       const groupsCount = b;
 
       if (!Number.isFinite(groupsCount) || groupsCount <= 0) {
         return [<div key="error">Enter a valid divisor</div>];
       }
 
-      const applesPerGroup = Math.floor(total / groupsCount);
-      const remainder = total % groupsCount;
+      const rowsOfApples = Math.floor(totalApples / groupsCount);
+      const remainder = totalApples % groupsCount;
 
-      for (let i = 0; i < applesPerGroup; i++) {
+      for (let i = 0; i < rowsOfApples; i++) {
         const group = [];
+
+        // build row of apples
         for (let j = 0; j < groupsCount; j++) {
           const key = `div-${i}-${j}`
           group.push(<Apple key={key} />);
         }
-        groups.push(<div key={`div-group-${i}`} className='apple-divison-row'>{group}</div>);
+
+        // push row into array
+        groups.push(
+          <div key={`div-group-${i}`} className='apple-divison-row'>{group}</div>
+        );
       }
       
       // push remainder row into array
@@ -61,7 +67,6 @@ const AppleVisualizer: React.FC = () => {
         className='apple-remainder-row'>{remainderGroup}</div>)
       }
     }
-    
     return groups;
   }
 
