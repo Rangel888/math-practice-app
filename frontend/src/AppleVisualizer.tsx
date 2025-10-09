@@ -47,7 +47,7 @@ const AppleVisualizer: React.FC = () => {
           const key = `div-${i}-${j}`
           group.push(<Apple key={key} />);
         }
-        groups.push(<div key={`div-group-${i}`}>{group}</div>);
+        groups.push(<div key={`div-group-${i}`} className='apple-divison-row'>{group}</div>);
       }
 
       if (remainder > 0) {
@@ -57,7 +57,7 @@ const AppleVisualizer: React.FC = () => {
             );
         }
         groups.push(<div key="remainder"
-        style={{textAlign: "left"}}>{remainderGroup}</div>)
+        className='apple-remainder-row'>{remainderGroup}</div>)
       }
     }
     
