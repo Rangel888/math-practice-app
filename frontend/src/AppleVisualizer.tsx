@@ -15,24 +15,24 @@ const AppleVisualizer: React.FC = () => {
     let groups = [];
 
     if (mode === "multiplication") {
-      // Multiplication: a groups of b apples
       for (let i = 0; i < a; i++) {
         let group = [];
+
+        // build row of apples
         for (let j = 0; j < b; j++) {
           const key = `mult-${i}-${j}`
           group.push(<Apple key={key} />);
         }
+        
+        // push row into array
         groups.push(
-          <div key={`mult-group-${i}`}>
-            {group}
-          </div>
+          <div key={`mult-group-${i}`}>{group}</div>
         );
       }
     }
     else if (mode === "division") {
       const total = a;
       const groupsCount = b;
-      //if (groupsCount === 0) return [<div key="error">Cannot divide by 0</div>];
 
       if (!Number.isFinite(groupsCount) || groupsCount <= 0) {
         return [<div key="error">Enter a valid divisor</div>];
@@ -49,7 +49,8 @@ const AppleVisualizer: React.FC = () => {
         }
         groups.push(<div key={`div-group-${i}`} className='apple-divison-row'>{group}</div>);
       }
-
+      
+      // push remainder row into array
       if (remainder > 0) {
         const remainderGroup = [];
         for (let i = 0; i < remainder; i ++) {
