@@ -21,5 +21,5 @@ Coming soon..
 ## Live Demo
 Coming soon..
 
-## Planed Features 
+## Planned Features 
 Coming soon..
