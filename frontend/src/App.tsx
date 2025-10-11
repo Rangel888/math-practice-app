@@ -1,16 +1,21 @@
+import { BroswserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Visualizer from './AppleVisualizer';
+import AppleVisualizer from './AppleVisualizer';
 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Visualizer />
-      </header>
-    </div>
+
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<AppleVisualizer />}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
