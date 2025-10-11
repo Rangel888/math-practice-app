@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './AppleVisualizer.scss';
 
@@ -7,9 +7,31 @@ const Apple = () => (
 );
 
 const AppleVisualizer: React.FC = () => {
-  const [mode, setMode] = useState("multiplication");
-  const [a, setA] = useState<number>(3);
-  const [b, setB] = useState<number>(4);
+  const [mode, setMode] = useState(() => {
+    return localStorage.getItem('mode') || 'multiplication';
+  });
+
+  const [a, setA] = useState<number>(() => {
+    const saved = localStorage.getItem('a');
+    return saved ? parseInt(saved) : 3;
+  });
+  const [b, setB] = useState<number>(() => {
+    const saved = localStorage.getItem('b');
+    return saved ? parseInt(saved) : 4;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('a', String(a));
+  }, [a]);
+
+  useEffect(() => {
+    localStorage.setItem('b', String(b));
+  }, [b]);
+
+  useEffect(() => {
+    localStorage.setItem('mode', mode);
+  }, [mode]);
+
 
   const renderGroups = () => {
     let groups = [];
