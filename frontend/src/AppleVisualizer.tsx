@@ -8,28 +8,28 @@ const Apple = () => (
 
 const AppleVisualizer: React.FC = () => {
   const [mode, setMode] = useState(() => {
-    return localStorage.getItem('mode') || 'multiplication';
+    return sessionStorage.getItem('mode') || 'multiplication';
   });
 
   const [a, setA] = useState<number>(() => {
-    const saved = localStorage.getItem('a');
+    const saved = sessionStorage.getItem('a');
     return saved ? parseInt(saved) : 3;
   });
   const [b, setB] = useState<number>(() => {
-    const saved = localStorage.getItem('b');
+    const saved = sessionStorage.getItem('b');
     return saved ? parseInt(saved) : 4;
   });
 
   useEffect(() => {
-    localStorage.setItem('a', String(a));
+    sessionStorage.setItem('a', String(a));
   }, [a]);
 
   useEffect(() => {
-    localStorage.setItem('b', String(b));
+    sessionStorage.setItem('b', String(b));
   }, [b]);
 
   useEffect(() => {
-    localStorage.setItem('mode', mode);
+    sessionStorage.setItem('mode', mode);
   }, [mode]);
 
 
