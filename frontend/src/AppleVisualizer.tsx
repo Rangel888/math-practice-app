@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 
 import './AppleVisualizer.scss';
 
@@ -44,8 +44,39 @@ const AppleVisualizer: React.FC = () => {
 }, [mode]);
 
 
+  const basketRef = useRef<HTMLDivElement>(null);
+  const [scaleFactor, setScaleFactor] = useState(1);
 
+  // Update scale factor for basket when a, b, mode, or window size changes
+  useEffect(() => {
+    const updateScale = () => {
+      if (basketRef.current) {
 
+        // basket DOM node
+        const basket = basketRef.current;
+
+        const basketWidth = basket.scrollWidth;
+        const basketHeight = basket.scrollHeight;
+
+        const maxWidth = window.innerWidth * 0.95;
+        const maxHeight = window.innerHeight * 0.8;
+
+        const widthScale = maxWidth / basketWidth;
+        const heightScale = maxHeight / basketHeight;
+
+        const newScale = Math.min(1, widthScale, heightScale);
+        setScaleFactor(newScale);
+      }
+    };
+
+    updateScale();
+
+    // updates on resize 
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, [a, b, mode])
+
+  
   const renderGroups = () => {
     let groups = [];
 
@@ -179,9 +210,14 @@ const AppleVisualizer: React.FC = () => {
               : `${a} ÷ ${b} = ${Math.floor(a / b)} R${a % b}`}
         </strong>
       </div>
-
-      <div className="basket">
-        <div className="apple-group">{renderGroups()}</div>
+      <div className="basket-wrapper">
+        <div className="basket" 
+          ref={basketRef}
+          style={{
+              transform: `scale(${scaleFactor})`,
+            }}>
+          <div className="apple-group">{renderGroups()}</div>
+        </div>
       </div>
     </div>
 
