@@ -9,11 +9,11 @@ import Box from '@mui/material/Box';
 interface MenuCardProps {
   title: string;
   description: string;
-  emoji?: string
+  icon?: React.ReactNode;
   onClick?: () => void;
 }
 
-const MenuCard: React.FC<MenuCardProps> = ({ title, description, emoji, onClick}) => {
+const MenuCard: React.FC<MenuCardProps> = ({ title, description, icon, onClick}) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea onClick={onClick}>
@@ -27,7 +27,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ title, description, emoji, onClick}
             userSelect: 'none',
           }}
         >
-          {emoji}
+          {icon}
         </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">{title}</Typography>
