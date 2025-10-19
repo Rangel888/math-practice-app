@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
           <Cards 
             title="Apple Visualizer"
             description="Visualize multiplication and division operations using apples"
-            emoji="🍎"
+            icon="🍎"
             onClick={() => navigate('/apple-visualizer')}
           />
         </Grid>
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
           <Cards 
             title="Problem Generator"
             description="Generate random math problems for practice"
-            emoji={
+            icon={
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <span style={{ fontSize: '2rem' }}>➕</span>
                 <span style={{ fontSize: '2rem' }}>➖</span>
