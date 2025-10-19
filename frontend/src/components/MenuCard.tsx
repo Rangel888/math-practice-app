@@ -15,8 +15,13 @@ interface MenuCardProps {
 
 const MenuCard: React.FC<MenuCardProps> = ({ title, description, icon, onClick}) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={onClick}>
+    <Card sx={{ maxWidth: 345, height:"100%"}}>
+      <CardActionArea 
+        onClick={onClick} 
+        sx={{ 
+          height: '100%'
+        }}
+      >
         <Box
           sx={{
             height: 120,
