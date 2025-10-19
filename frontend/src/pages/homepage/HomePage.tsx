@@ -24,10 +24,7 @@ const HomePage: React.FC = () => {
             description="Generate random math problems for practice"
             icon={
               <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <span style={{ fontSize: '2rem' }}>➕</span>
-                <span style={{ fontSize: '2rem' }}>➖</span>
-                <span style={{ fontSize: '2rem' }}>✖️</span>
-                <span style={{ fontSize: '2rem' }}>➗</span>
+                <span style={{ fontSize: '3rem' }}>➕➖✖️➗</span>
               </div>
             }
           />
