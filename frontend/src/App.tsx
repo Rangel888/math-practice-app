@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import AppleVisualizer from './AppleVisualizer';
+import AppleVisualizer from './pages/AppleVisualizer/AppleVisualizer';
+import HomePage from './pages/homepage/HomePage';
 
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<AppleVisualizer />}/>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/apple-visualizer" element={<AppleVisualizer />}/>
         </Routes>
       </div>
     </Router>
