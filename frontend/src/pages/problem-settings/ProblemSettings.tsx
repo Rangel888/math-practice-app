@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { ChangeEvent } from 'react'
+import { FormControl, InputLabel, Select, MenuItem, TextField} from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from 'react'
 import './ProblemSettings.scss'
@@ -8,15 +9,30 @@ const ProblemSettings: React.FC = () => {
   const [settings, setSettings] = useState({
     mode: 'addition',
     difficulty: 'easy',
+		numProblems: 1,
+		useRemainders: false,
+		soundEffects: false
   });
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleSelectChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
     setSettings((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
+
+	const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target;
+		let parsed = parseInt(value)
+		
+		if (parsed < 1) parsed = 1;
+    if (parsed > 10) parsed = 10;
+		setSettings((prev) => ({
+      ...prev,
+      [name]: parsed,
+    }));
+	}
 
   return (
     <div className="wrapper">
@@ -28,7 +44,7 @@ const ProblemSettings: React.FC = () => {
 					name="mode"
 					value={settings.mode}
 					label="Select Mode"
-					onChange={handleChange}
+					onChange={handleSelectChange}
 				>
 					<MenuItem value="addition">Addition</MenuItem>
 					<MenuItem value="subtraction">Subtraction</MenuItem>
@@ -46,13 +62,24 @@ const ProblemSettings: React.FC = () => {
 					name="difficulty"
 					value={settings.difficulty}
 					label="Select Difficulty"
-					onChange={handleChange}
+					onChange={handleSelectChange}
 				>
 					<MenuItem value="easy">Easy</MenuItem>
 					<MenuItem value="medium">Medium</MenuItem>
 					<MenuItem value="hard">Hard</MenuItem>
 				</Select>
 			</FormControl>
+
+			<TextField
+        label="Number of Problems"
+        type="number"
+				name="numProblems"
+        value={settings.numProblems}
+        onChange={handleNumberChange}
+        inputProps={{ min: 1, max: 10 }}
+        fullWidth
+        sx={{ mt: 2 }}
+      />
     </div>
   );
 };
