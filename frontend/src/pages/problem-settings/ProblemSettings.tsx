@@ -22,17 +22,17 @@ const ProblemSettings: React.FC = () => {
     }));
   };
 
-	const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = event.target;
-		let parsed = parseInt(value)
+  const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+	let parsed = parseInt(value)
 		
-		if (parsed < 1) parsed = 1;
+	if (parsed < 1) parsed = 1;
     if (parsed > 10) parsed = 10;
-		setSettings((prev) => ({
-      ...prev,
-      [name]: parsed,
+	  setSettings((prev) => ({
+        ...prev,
+        [name]: parsed,
     }));
-	}
+  }
 
   return (
     <div className="wrapper">
