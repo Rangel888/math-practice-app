@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef} from 'react';
 
 import './AppleVisualizer.scss';
 
-const Apple = () => (
+const Apple = React.memo(() => 
   <span style={{ fontSize: '2rem', margin: '2px' }}>🍎</span>
 );
 
