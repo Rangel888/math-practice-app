@@ -39,6 +39,7 @@ const HomePage: React.FC = () => {
                 <SettingsIcon sx={{ fontSize: 100 }} />
               </div>
             }
+            onClick={() => navigate('/problem-settings')}
           />
         </Grid>
       </Grid>
