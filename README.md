@@ -22,4 +22,8 @@ Coming soon..
 Coming soon..
 
 ## Planned Features 
-Coming soon..
+- [ ] Task bar
+- [ ] Login page
+- [ ] Problem Generating page
+- [ ] Saving settings to backend
+- [ ] Retrieve problems from backend
