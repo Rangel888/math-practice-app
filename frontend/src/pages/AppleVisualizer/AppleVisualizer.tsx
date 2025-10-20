@@ -34,14 +34,14 @@ const AppleVisualizer: React.FC = () => {
 
 
   useEffect(() => {
-  if (mode === 'multiplication') {
-    setA(prev => Math.min(10, Math.max(0, prev)));
-    setB(prev => Math.min(10, Math.max(0, prev)));
-  } else if (mode === 'division') {
-    setA(prev => Math.min(100, Math.max(0, prev)));
-    setB(prev => Math.min(100, Math.max(0, prev)));
-  }
-}, [mode]);
+    if (mode === 'multiplication') {
+      setA(prev => Math.min(10, Math.max(0, prev)));
+      setB(prev => Math.min(10, Math.max(0, prev)));
+    } else if (mode === 'division') {
+      setA(prev => Math.min(100, Math.max(0, prev)));
+      setB(prev => Math.min(100, Math.max(0, prev)));
+    }
+  }, [mode]);
 
 
   const basketRef = useRef<HTMLDivElement>(null);
